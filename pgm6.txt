@@ -1,0 +1,9 @@
+step1= Jenkins dashboard press "new item"
+
+step2= enter item name and select pipeline and click ok
+
+step3= after that scroll down till you find GitHub project and click on it and paste the GitHub url (https://github.com/Nikhilpv4526/devops.git/) and click save
+
+step4= click build now
+
+step5= open console output and show it
