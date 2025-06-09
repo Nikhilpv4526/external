@@ -3,15 +3,66 @@
 step1= gradle init --type java-application
 
 step2= build.gradle
-	plugins { id 'application' } application { mainClass = 'com.example.AdditionOperation' } repositories { mavenCentral()
-} dependencies { testImplementation 'junit:junit:4.13.2' } test { outputs.upToDateWhen { false } testLogging { events "passed", "failed", "skipped" exceptionFormat "full" showStandardStreams = true } }
+	plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.example.AdditionOperation'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    outputs.upToDateWhen { false }
+    testLogging {
+        events "passed", "failed", "skipped"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
+}
+
 
 step3= app.java to additionoperation.java
-	package com.example; public class AdditionOperation { public static void main(String[] args) { double num1 = 5; double num2 = 10; double sum = num1 + num2; System.out.printf("The sum of %.2f and %.2f is %.2f%n", num1, num2, sum); } }
+	package com.example;
+
+public class AdditionOperation {
+
+    public static void main(String[] args) {
+        double num1 = 5;
+        double num2 = 10;
+        double sum = num1 + num2;
+
+        System.out.printf("The sum of %.2f and %.2f is %.2f%n", num1, num2, sum);
+    }
+}
+
 
 step4= apptest.java to additionoperationtest.java
-	package com.example; import org.junit.Test; import static org.junit.Assert.*; public class AdditionOperationTest { @Test public void testAddition() { double num1 = 5; double num2 = 10;
-double expectedSum = num1 + num2; double actualSum = num1 + num2; assertEquals(expectedSum, actualSum, 0.01); } }
+	package com.example;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AdditionOperationTest {
+
+    @Test
+    public void testAddition() {
+        double num1 = 5;
+        double num2 = 10;
+        double expectedSum = num1 + num2;
+        double actualSum = num1 + num2;
+        
+        assertEquals(expectedSum, actualSum, 0.01);
+    }
+}
+
 
 step5= gradle build
 
@@ -24,15 +75,71 @@ step7= gradle test
 step1= gradle init --type java-application
 
 step2= build.gradle.kts
-	plugins { kotlin("jvm") version "1.8.21" application } repositories { mavenCentral() } dependencies { implementation(kotlin("stdlib")) testImplementation("junit:junit:4.13.2")
-} application { mainClass.set("com.example.MainKt") } tasks.test { useJUnit() testLogging { events("passed", "failed", "skipped") exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL showStandardStreams = true } outputs.upToDateWhen { false } } java { toolchain { languageVersion.set(JavaLanguageVersion.of(17)) } }
+	plugins {
+    kotlin("jvm") version "1.8.21"
+    application
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
+    testImplementation("junit:junit:4.13.2")
+}
+
+application {
+    mainClass.set("com.example.MainKt")
+}
+
+tasks.test {
+    useJUnit()
+    testLogging {
+        events("passed", "failed", "skipped")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
+    outputs.upToDateWhen { false }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 
 step3= app.java to main.kt
-	package com.example fun addNumbers(num1: Double, num2: Double): Double { return num1 + num2 } fun main() { val num1 = 10.0 val num2 = 5.0 val result = addNumbers(num1, num2) println("The sum of $num1 and $num2 is: $result") }
+	package com.example
+
+fun addNumbers(num1: Double, num2: Double): Double {
+    return num1 + num2
+}
+
+fun main() {
+    val num1 = 10.0
+    val num2 = 5.0
+    val result = addNumbers(num1, num2)
+    println("The sum of $num1 and $num2 is: $result")
+}
 
 step4= maintest.java to maintest.kt
-	package com.example import org.junit.Assert.* import org.junit.Test
-class MainTest { @Test fun testAddNumbers() { val num1 = 10.0 val num2 = 5.0 val result = addNumbers(num1, num2) assertEquals("The sum of $num1 and $num2 should be 15.0", 15.0, result, 0.001) } }
+	package com.example
+
+import org.junit.Assert.*
+import org.junit.Test
+
+class MainTest {
+
+    @Test
+    fun testAddNumbers() {
+        val num1 = 10.0
+        val num2 = 5.0
+        val result = addNumbers(num1, num2)
+        assertEquals("The sum of $num1 and $num2 should be 15.0", 15.0, result, 0.001)
+    }
+}
 
 step5= gradle build
 
