@@ -3,7 +3,7 @@
 step1= gradle init --type java-application
 
 step2= build.gradle
-	plugins {
+plugins {
     id 'application'
 }
 
@@ -30,7 +30,7 @@ test {
 
 
 step3= app.java to additionoperation.java
-	package com.example;
+package com.example;
 
 public class AdditionOperation {
 
@@ -45,7 +45,7 @@ public class AdditionOperation {
 
 
 step4= apptest.java to additionoperationtest.java
-	package com.example;
+package com.example;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -75,7 +75,7 @@ step7= gradle test
 step1= gradle init --type java-application
 
 step2= build.gradle.kts
-	plugins {
+plugins {
     kotlin("jvm") version "1.8.21"
     application
 }
@@ -125,7 +125,7 @@ fun main() {
 }
 
 step4= maintest.java to maintest.kt
-	package com.example
+package com.example
 
 import org.junit.Assert.*
 import org.junit.Test
